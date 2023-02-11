@@ -104,7 +104,18 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        pass
+        current_node = self._head
+        if index < 0 or index > self.length():
+            raise SLLException
+
+        for i in range(0, index + 1):
+            if index == i:
+                temp = current_node.next
+                new_node = SLNode(value)
+                current_node.next = new_node
+                new_node.next = temp
+
+            current_node = current_node.next
 
     def remove_at_index(self, index: int) -> None:
         """
@@ -146,23 +157,23 @@ if __name__ == "__main__":
     #     lst.insert_front(case)
     #     print(lst)
 
-    print("\n# insert_back example 1")
-    test_case = ["C", "B", "A"]
-    lst = LinkedList()
-    for case in test_case:
-        lst.insert_back(case)
-        print(lst)
-
-    # print("\n# insert_at_index example 1")
+    # print("\n# insert_back example 1")
+    # test_case = ["C", "B", "A"]
     # lst = LinkedList()
-    # test_cases = [(0, "A"), (0, "B"), (1, "C"), (3, "D"), (-1, "E"), (5, "F")]
-    # for index, value in test_cases:
-    #     print("Inserted", value, "at index", index, ": ", end="")
-    #     try:
-    #         lst.insert_at_index(index, value)
-    #         print(lst)
-    #     except Exception as e:
-    #         print(type(e))
+    # for case in test_case:
+    #     lst.insert_back(case)
+    #     print(lst)
+
+    print("\n# insert_at_index example 1")
+    lst = LinkedList()
+    test_cases = [(0, "A"), (0, "B"), (1, "C"), (3, "D"), (-1, "E"), (5, "F")]
+    for index, value in test_cases:
+        print("Inserted", value, "at index", index, ": ", end="")
+        try:
+            lst.insert_at_index(index, value)
+            print(lst)
+        except Exception as e:
+            print(type(e))
     #
     # print("\n# remove_at_index example 1")
     # lst = LinkedList([1, 2, 3, 4, 5, 6])
