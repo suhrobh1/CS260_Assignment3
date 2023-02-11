@@ -175,8 +175,40 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        pass
 
+        newList = LinkedList()
+        current_node = self._head
+
+        if size == 0:
+            return newList
+        if size == 1:
+            for i in range(0, self.length()):
+                if (i == start_index):
+                    newList._head = current_node
+                    return newList
+                current_node = current_node.next
+
+        if (start_index < 0 or start_index > self.length() - 1):
+            raise SLLException
+        if(size > self.length() - start_index or size < 0):
+            raise SLLException
+
+
+        current_node = self._head
+        for i in range(0, self.length()):
+            if (i == start_index):
+                print("node value", current_node.value)
+                newList._head = current_node
+                break
+            current_node = current_node.next
+
+        current_node_new = newList._head.next
+        for i in range(1, size):
+            current_node_new = current_node_new.next
+        current_node_new.next = None
+
+
+        return newList
 
 if __name__ == "__main__":
 
@@ -252,7 +284,7 @@ if __name__ == "__main__":
     print("\n# slice example 2")
     lst = LinkedList([10, 11, 12, 13, 14, 15, 16])
     print("Source:", lst)
-    slices = [(0, 7), (-1, 7), (0, 8), (2, 3), (5, 0), (5, 3), (6, 1)]
+    slices = [(6, 1), (0, 7), (-1, 7), (0, 8), (2, 3), (5, 0), (5, 3), (6, 1)]
     for index, size in slices:
         print("Start:", index, "Size:", size, end="")
         try:
