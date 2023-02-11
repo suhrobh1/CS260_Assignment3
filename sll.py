@@ -186,10 +186,9 @@ class LinkedList:
         if size == 0:
             return newList
         if size == 1:
-
             for i in range(0, self.length()):
                 if (i == start_index):
-                    newList._head = current_node
+                    newList.insert_front(current_node.value)
 
                     return newList
                 current_node = current_node.next
@@ -300,15 +299,12 @@ if __name__ == "__main__":
     # ll_slice.remove_at_index(0)
     # print("Removed at index 0 :", ll_slice)
 
-    lst = LinkedList([10, 11, 12, 13, 14, 15, 16])
+    lst = LinkedList([-39758 , -38721 ,57359])
+    ll_slice = lst.slice(1, 1)
     print("Source:", lst)
-    slices = [(0, 7), (-1, 7), (0, 8), (2, 3), (5, 0), (5, 3), (6, 1)]
-    for index, size in slices:
-        print("Start:", index, "Size:", size, end="")
-        try:
-            print(" :", lst.slice(index, size))
-        except:
-            print(" : exception occurred.")
+    print("Start: 1 Size: 1 :", ll_slice)
+    # ll_slice.remove_at_index(0)
+    # print("Removed at index 0 :", ll_slice)
     print("_----------------------------------------------------------------------")
 
     print("\n# slice example 1")
