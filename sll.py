@@ -152,13 +152,24 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        pass
+        current_node = self._head.next
+        count = 0
+        for i in range(self.length()):
+            if (current_node.value == value):
+                count += 1
+            current_node = current_node.next
+        return count
 
     def find(self, value: object) -> bool:
         """
         TODO: Write this implementation
         """
-        pass
+        current_node = self._head.next
+        for i in range(self.length()):
+            if (current_node.value == value):
+                return True
+            current_node = current_node.next
+        return False
 
     def slice(self, start_index: int, size: int) -> "LinkedList":
         """
@@ -205,46 +216,46 @@ if __name__ == "__main__":
     #     except Exception as e:
     #         print(type(e))
 
-    print("\n# remove example 1")
-    lst = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
-    print(f"Initial LinkedList, Length: {lst.length()}\n  {lst}")
-    for value in [7, 3, 3, 3, 3]:
-        print(f"remove({value}): {lst.remove(value)}, Length: {lst.length()}"
-              f"\n {lst}")
+    # print("\n# remove example 1")
+    # lst = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
+    # print(f"Initial LinkedList, Length: {lst.length()}\n  {lst}")
+    # for value in [7, 3, 3, 3, 3]:
+    #     print(f"remove({value}): {lst.remove(value)}, Length: {lst.length()}"
+    #           f"\n {lst}")
+    #
+    # print("\n# remove example 2")
+    # lst = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
+    # print(f"Initial LinkedList, Length: {lst.length()}\n  {lst}")
+    # for value in [1, 2, 3, 1, 2, 3, 3, 2, 1]:
+    #     print(f"remove({value}): {lst.remove(value)}, Length: {lst.length()}"
+    #           f"\n {lst}")
+    #
+    print("\n# count example 1")
+    lst = LinkedList([1, 2, 3, 1, 2, 2])
+    print(lst, lst.count(1), lst.count(2), lst.count(3), lst.count(4))
 
-    print("\n# remove example 2")
-    lst = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
-    print(f"Initial LinkedList, Length: {lst.length()}\n  {lst}")
-    for value in [1, 2, 3, 1, 2, 3, 3, 2, 1]:
-        print(f"remove({value}): {lst.remove(value)}, Length: {lst.length()}"
-              f"\n {lst}")
-    #
-    # print("\n# count example 1")
-    # lst = LinkedList([1, 2, 3, 1, 2, 2])
-    # print(lst, lst.count(1), lst.count(2), lst.count(3), lst.count(4))
-    #
-    # print("\n# find example 1")
-    # lst = LinkedList(["Waldo", "Clark Kent", "Homer", "Santa Claus"])
-    # print(lst)
-    # print(lst.find("Waldo"))
-    # print(lst.find("Superman"))
-    # print(lst.find("Santa Claus"))
-    #
-    # print("\n# slice example 1")
-    # lst = LinkedList([1, 2, 3, 4, 5, 6, 7, 8, 9])
-    # ll_slice = lst.slice(1, 3)
-    # print("Source:", lst)
-    # print("Start: 1 Size: 3 :", ll_slice)
-    # ll_slice.remove_at_index(0)
-    # print("Removed at index 0 :", ll_slice)
-    #
-    # print("\n# slice example 2")
-    # lst = LinkedList([10, 11, 12, 13, 14, 15, 16])
-    # print("Source:", lst)
-    # slices = [(0, 7), (-1, 7), (0, 8), (2, 3), (5, 0), (5, 3), (6, 1)]
-    # for index, size in slices:
-    #     print("Start:", index, "Size:", size, end="")
-    #     try:
-    #         print(" :", lst.slice(index, size))
-    #     except:
-    #         print(" : exception occurred.")
+    print("\n# find example 1")
+    lst = LinkedList(["Waldo", "Clark Kent", "Homer", "Santa Claus"])
+    print(lst)
+    print(lst.find("Waldo"))
+    print(lst.find("Superman"))
+    print(lst.find("Santa Claus"))
+
+    print("\n# slice example 1")
+    lst = LinkedList([1, 2, 3, 4, 5, 6, 7, 8, 9])
+    ll_slice = lst.slice(1, 3)
+    print("Source:", lst)
+    print("Start: 1 Size: 3 :", ll_slice)
+    ll_slice.remove_at_index(0)
+    print("Removed at index 0 :", ll_slice)
+
+    print("\n# slice example 2")
+    lst = LinkedList([10, 11, 12, 13, 14, 15, 16])
+    print("Source:", lst)
+    slices = [(0, 7), (-1, 7), (0, 8), (2, 3), (5, 0), (5, 3), (6, 1)]
+    for index, size in slices:
+        print("Start:", index, "Size:", size, end="")
+        try:
+            print(" :", lst.slice(index, size))
+        except:
+            print(" : exception occurred.")
