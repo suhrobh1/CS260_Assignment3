@@ -175,37 +175,47 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
+        if (start_index < 0 or start_index > self.length() - 1):
+            raise SLLException
+        if (size > self.length() - start_index or size < 0):
+            raise SLLException
 
         newList = LinkedList()
-        current_node = self._head.next
+        current_node = self._head
 
         if size == 0:
             return newList
         if size == 1:
+
             for i in range(0, self.length()):
                 if (i == start_index):
                     newList._head = current_node
+
                     return newList
                 current_node = current_node.next
 
-        if (start_index < 0 or start_index > self.length() - 1):
-            raise SLLException
-        if(size > self.length() - start_index or size < 0):
-            raise SLLException
 
 
-        current_node = self._head
+
+        starting_node = None
         for i in range(0, self.length()):
             if (i == start_index):
                 print("node value", current_node.value)
-                newList._head = current_node
+                starting_node = current_node.next
                 break
             current_node = current_node.next
 
-        current_node_new = newList._head.next
-        for i in range(1, size):
-            current_node_new = current_node_new.next
-        current_node_new.next = None
+
+        for i in range(0, size):
+            newList.insert_back(starting_node.value)
+            starting_node = starting_node.next
+        #
+        # newList._head = SLNode(starting_node.value)
+        # newList._head.next = starting_node.next
+        # current_node = starting_node.next
+        # for i in range(1, size ):
+        #     current_node = current_node.next
+        # #current_node.next = None
 
 
         return newList
