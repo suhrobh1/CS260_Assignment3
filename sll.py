@@ -177,7 +177,7 @@ class LinkedList:
         """
 
         newList = LinkedList()
-        current_node = self._head
+        current_node = self._head.next
 
         if size == 0:
             return newList
@@ -272,6 +272,34 @@ if __name__ == "__main__":
     print(lst.find("Waldo"))
     print(lst.find("Superman"))
     print(lst.find("Santa Claus"))
+
+
+
+
+
+
+
+
+
+    print("_----------------------------------------------------------------------")
+
+    lst = LinkedList([-69911 , 7754 , 14546,-37436 , 85109,-24272, 5464])
+    ll_slice = lst.slice(0, 6)
+    print("Source:", lst)
+    print("Start: 0 Size: 6 :", ll_slice)
+    # ll_slice.remove_at_index(0)
+    # print("Removed at index 0 :", ll_slice)
+
+    lst = LinkedList([10, 11, 12, 13, 14, 15, 16])
+    print("Source:", lst)
+    slices = [(0, 7), (-1, 7), (0, 8), (2, 3), (5, 0), (5, 3), (6, 1)]
+    for index, size in slices:
+        print("Start:", index, "Size:", size, end="")
+        try:
+            print(" :", lst.slice(index, size))
+        except:
+            print(" : exception occurred.")
+    print("_----------------------------------------------------------------------")
 
     print("\n# slice example 1")
     lst = LinkedList([1, 2, 3, 4, 5, 6, 7, 8, 9])
