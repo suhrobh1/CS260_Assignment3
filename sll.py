@@ -188,6 +188,7 @@ class LinkedList:
         if size == 1:
             for i in range(0, self.length()):
                 if (i == start_index):
+                    current_node= current_node.next
                     newList.insert_front(current_node.value)
 
                     return newList
