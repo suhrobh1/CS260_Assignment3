@@ -85,12 +85,10 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        print("self.head value: ", self._head.value)
+        # print("self.head value: ", self._head.value)
         if self._head.value is None:
             self._head = SLNode(value)
             self.insert_front(value)
-
-
 
         else:
             current_node = self._head
