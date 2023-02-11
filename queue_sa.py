@@ -70,13 +70,14 @@ class Queue:
         """
         TODO: Write this implementation
         """
-        print("self._sa.length()", self._sa.length())
-        print("self._current_size", self._current_size)
+        # print("self._sa.length()", self._sa.length())
+        # print("self._current_size", self._current_size)
 
         # Option 1 for resize check
         if self.isFull():
-            print("Target hit!")
+            # print("Target hit!")
             self._double_queue()
+
 
         # Option 2 for resize check
         # if(self._sa.length() == self._current_size):
@@ -91,7 +92,33 @@ class Queue:
         """
         TODO: Write this implementation
         """
-        pass
+        # print("front", self._front)
+        # print("current size", self._current_size)
+        # # print("self.length()", curr)
+        if self.is_empty():
+            raise QueueException
+
+        temp = self._sa[self._front]
+        self._front = (self._front + 1) % self._sa.length()
+        self._current_size -= 1
+        return temp
+
+
+
+        # temp = self._sa[self._front]
+        # temp_length = self._current_size
+        # # if(self._front == 0 and self._back == -1):
+        # # if self._front == self._back - 1:
+        # if self._current_size == 1:
+        #     self._front = 0
+        #     self._back = -1
+        #     self._current_size = 0
+        # else:
+        #
+        #     self._front = (self._front + 1) % temp_length
+        #     self._current_size -= 1
+        #
+        # return temp
 
     def front(self) -> object:
         """
@@ -126,7 +153,7 @@ class Queue:
 
             new_array[i] = self._sa[j]
             i += 1
-            j = (j + i) % self._current_size
+            j = (j + 1) % self._current_size
 
 
         self._front = 0
