@@ -186,6 +186,7 @@ class LinkedList:
         if size == 0:
             return newList
         if size == 1:
+            # If the index needed matches the iterated index
             for i in range(0, self.length()):
                 if (i == start_index):
                     current_node= current_node.next
@@ -194,13 +195,10 @@ class LinkedList:
                     return newList
                 current_node = current_node.next
 
-
-
-
         starting_node = None
         for i in range(0, self.length()):
             if (i == start_index):
-                print("node value", current_node.value)
+                # print("node value", current_node.value)
                 starting_node = current_node.next
                 break
             current_node = current_node.next
@@ -209,14 +207,6 @@ class LinkedList:
         for i in range(0, size):
             newList.insert_back(starting_node.value)
             starting_node = starting_node.next
-        #
-        # newList._head = SLNode(starting_node.value)
-        # newList._head.next = starting_node.next
-        # current_node = starting_node.next
-        # for i in range(1, size ):
-        #     current_node = current_node.next
-        # #current_node.next = None
-
 
         return newList
 
