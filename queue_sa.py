@@ -70,7 +70,22 @@ class Queue:
         """
         TODO: Write this implementation
         """
-        pass
+        print("self._sa.length()", self._sa.length())
+        print("self._current_size", self._current_size)
+
+        # Option 1 for resize check
+        if self.isFull():
+            print("Target hit!")
+            self._double_queue()
+
+        # Option 2 for resize check
+        # if(self._sa.length() == self._current_size):
+        #     self._double_queue()
+
+
+        self._back = (self._back + 1) % self._sa.length()
+        self._sa[self._back] = value
+        self._current_size += 1
 
     def dequeue(self) -> object:
         """
@@ -91,8 +106,53 @@ class Queue:
         """
         TODO: Write this implementation
         """
-        pass
 
+        # new_array = StaticArray(2 * self._sa.length())
+        # j = self._front
+        # for i in range(self._sa.length()):
+        #     j = (j + i) % self._current_size
+        #     new_array[i] = self._sa[j]
+        # self._front = 0
+        # self._back = self._sa.length() - 1
+        # self._sa = new_array
+
+        #
+        #
+        new_array = StaticArray(2 * self._sa.length())
+        i = 0  # new array iterator
+        j = self._front  # old array iterator
+
+        while(self._current_size != i):
+
+            new_array[i] = self._sa[j]
+            i += 1
+            j = (j + i) % self._current_size
+
+
+        self._front = 0
+        self._back = self._sa.length() - 1
+        self._sa = new_array
+
+
+        # new_queue = StaticArray(2 * self._current_size)
+        #
+        # # Populate new queue with current queue elements
+        # for i in range(self._current_size):
+        #     index = (i + self._front) % self._current_size
+        #     new_queue[i] = self._sa[index]
+        #
+        # # Reset front and back pointers
+        # self._front = 0
+        # self._back = self._current_size - 1
+        #
+        # # Assign current queue to new queue
+        # self._sa = new_queue
+
+
+
+    def isFull(self):
+        return (self._current_size == self._sa.length())
+        # return (self._back + 1) % self._sa.length() == self._front
 
 # ------------------- BASIC TESTING -----------------------------------------
 
