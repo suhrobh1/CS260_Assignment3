@@ -117,11 +117,26 @@ class LinkedList:
 
             current_node = current_node.next
 
+
     def remove_at_index(self, index: int) -> None:
         """
         TODO: Write this implementation
         """
-        pass
+        previous_node = self._head
+        current_node = self._head.next
+
+        if index < 0 or index > self.length() - 1:
+            raise SLLException
+
+        for i in range(0, index):
+            previous_node = current_node
+            current_node = current_node.next
+
+        previous_node.next = current_node.next
+        return
+
+
+
 
     def remove(self, value: object) -> bool:
         """
@@ -164,41 +179,41 @@ if __name__ == "__main__":
     #     lst.insert_back(case)
     #     print(lst)
 
-    print("\n# insert_at_index example 1")
-    lst = LinkedList()
-    test_cases = [(0, "A"), (0, "B"), (1, "C"), (3, "D"), (-1, "E"), (5, "F")]
-    for index, value in test_cases:
-        print("Inserted", value, "at index", index, ": ", end="")
-        try:
-            lst.insert_at_index(index, value)
-            print(lst)
-        except Exception as e:
-            print(type(e))
-    #
-    # print("\n# remove_at_index example 1")
-    # lst = LinkedList([1, 2, 3, 4, 5, 6])
-    # print(f"Initial LinkedList : {lst}")
-    # for index in [0, 2, 0, 2, 2, -2]:
-    #     print("Removed at index", index, ": ", end="")
+    # print("\n# insert_at_index example 1")
+    # lst = LinkedList()
+    # test_cases = [(0, "A"), (0, "B"), (1, "C"), (3, "D"), (-1, "E"), (5, "F")]
+    # for index, value in test_cases:
+    #     print("Inserted", value, "at index", index, ": ", end="")
     #     try:
-    #         lst.remove_at_index(index)
+    #         lst.insert_at_index(index, value)
     #         print(lst)
     #     except Exception as e:
     #         print(type(e))
     #
-    # print("\n# remove example 1")
-    # lst = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
-    # print(f"Initial LinkedList, Length: {lst.length()}\n  {lst}")
-    # for value in [7, 3, 3, 3, 3]:
-    #     print(f"remove({value}): {lst.remove(value)}, Length: {lst.length()}"
-    #           f"\n {lst}")
-    #
-    # print("\n# remove example 2")
-    # lst = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
-    # print(f"Initial LinkedList, Length: {lst.length()}\n  {lst}")
-    # for value in [1, 2, 3, 1, 2, 3, 3, 2, 1]:
-    #     print(f"remove({value}): {lst.remove(value)}, Length: {lst.length()}"
-    #           f"\n {lst}")
+    print("\n# remove_at_index example 1")
+    lst = LinkedList([1, 2, 3, 4, 5, 6])
+    print(f"Initial LinkedList : {lst}")
+    for index in [0, 2, 0, 2, 2, -2]:
+        print("Removed at index", index, ": ", end="")
+        try:
+            lst.remove_at_index(index)
+            print(lst)
+        except Exception as e:
+            print(type(e))
+
+    print("\n# remove example 1")
+    lst = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
+    print(f"Initial LinkedList, Length: {lst.length()}\n  {lst}")
+    for value in [7, 3, 3, 3, 3]:
+        print(f"remove({value}): {lst.remove(value)}, Length: {lst.length()}"
+              f"\n {lst}")
+
+    print("\n# remove example 2")
+    lst = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
+    print(f"Initial LinkedList, Length: {lst.length()}\n  {lst}")
+    for value in [1, 2, 3, 1, 2, 3, 3, 2, 1]:
+        print(f"remove({value}): {lst.remove(value)}, Length: {lst.length()}"
+              f"\n {lst}")
     #
     # print("\n# count example 1")
     # lst = LinkedList([1, 2, 3, 1, 2, 2])
