@@ -136,13 +136,17 @@ class LinkedList:
         return
 
 
-
-
     def remove(self, value: object) -> bool:
         """
         TODO: Write this implementation
         """
-        pass
+        current_node = self._head.next
+        for i in range(self.length()):
+            if(current_node.value == value):
+                self.remove_at_index(i)
+                return True
+            current_node = current_node.next
+        return False
 
     def count(self, value: object) -> int:
         """
@@ -190,16 +194,16 @@ if __name__ == "__main__":
     #     except Exception as e:
     #         print(type(e))
     #
-    print("\n# remove_at_index example 1")
-    lst = LinkedList([1, 2, 3, 4, 5, 6])
-    print(f"Initial LinkedList : {lst}")
-    for index in [0, 2, 0, 2, 2, -2]:
-        print("Removed at index", index, ": ", end="")
-        try:
-            lst.remove_at_index(index)
-            print(lst)
-        except Exception as e:
-            print(type(e))
+    # print("\n# remove_at_index example 1")
+    # lst = LinkedList([1, 2, 3, 4, 5, 6])
+    # print(f"Initial LinkedList : {lst}")
+    # for index in [0, 2, 0, 2, 2, -2]:
+    #     print("Removed at index", index, ": ", end="")
+    #     try:
+    #         lst.remove_at_index(index)
+    #         print(lst)
+    #     except Exception as e:
+    #         print(type(e))
 
     print("\n# remove example 1")
     lst = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
