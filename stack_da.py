@@ -55,6 +55,7 @@ class Stack:
         TODO: Write this implementation
         """
         self._da.append(value)
+        # print("Value", value)
 
     def pop(self) -> object:
         """
@@ -63,7 +64,7 @@ class Stack:
         if self._da.is_empty():
             raise StackException
 
-        removed_element = self.size()
+        removed_element = self._da.get_at_index(self.size() -1)
         self._da.remove_at_index(self.size() - 1)
         return removed_element
 
@@ -88,6 +89,24 @@ if __name__ == "__main__":
         s.push(value)
     print(s)
 
+
+
+
+    print("\n# pop example 2")
+    s = Stack()
+
+    try:
+        print(s.pop())
+    except Exception as e:
+        print("Exception:", type(e))
+    for value in [51301, 42440, -29511, 32440, -21921, 82304, -20585, -83652, -34235, 37357, -15327, -62722]:
+        s.push(value)
+    for i in range(6):
+        try:
+            print(s.pop())
+        except Exception as e:
+            print("Exception:", type(e))
+
     print("\n# pop example 1")
     s = Stack()
     try:
@@ -101,6 +120,20 @@ if __name__ == "__main__":
             print(s.pop())
         except Exception as e:
             print("Exception:", type(e))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     print("\n# top example 1")
     s = Stack()
