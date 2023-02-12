@@ -127,7 +127,7 @@ class Queue:
         if self.is_empty():
             raise QueueException
 
-        return self._front
+        return self._sa[self._front]
 
     # The method below is optional, but recommended, to implement. #
     # You may alter it in any way you see fit.                     #
