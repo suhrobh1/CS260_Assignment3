@@ -105,21 +105,6 @@ class Queue:
 
 
 
-        # temp = self._sa[self._front]
-        # temp_length = self._current_size
-        # # if(self._front == 0 and self._back == -1):
-        # # if self._front == self._back - 1:
-        # if self._current_size == 1:
-        #     self._front = 0
-        #     self._back = -1
-        #     self._current_size = 0
-        # else:
-        #
-        #     self._front = (self._front + 1) % temp_length
-        #     self._current_size -= 1
-        #
-        # return temp
-
     def front(self) -> object:
         """
         TODO: Write this implementation
@@ -137,17 +122,6 @@ class Queue:
         TODO: Write this implementation
         """
 
-        # new_array = StaticArray(2 * self._sa.length())
-        # j = self._front
-        # for i in range(self._sa.length()):
-        #     j = (j + i) % self._current_size
-        #     new_array[i] = self._sa[j]
-        # self._front = 0
-        # self._back = self._sa.length() - 1
-        # self._sa = new_array
-
-        #
-        #
         new_array = StaticArray(2 * self._sa.length())
         i = 0  # new array iterator
         j = self._front  # old array iterator
@@ -164,25 +138,10 @@ class Queue:
         self._sa = new_array
 
 
-        # new_queue = StaticArray(2 * self._current_size)
-        #
-        # # Populate new queue with current queue elements
-        # for i in range(self._current_size):
-        #     index = (i + self._front) % self._current_size
-        #     new_queue[i] = self._sa[index]
-        #
-        # # Reset front and back pointers
-        # self._front = 0
-        # self._back = self._current_size - 1
-        #
-        # # Assign current queue to new queue
-        # self._sa = new_queue
-
-
 
     def isFull(self):
         return (self._current_size == self._sa.length())
-        # return (self._back + 1) % self._sa.length() == self._front
+
 
 # ------------------- BASIC TESTING -----------------------------------------
 
