@@ -62,8 +62,9 @@ class Stack:
         """
         if self._da.is_empty():
             raise StackException
+
         removed_element = self.size()
-        self._da.remove_at_index(self.size() - 1)
+        self._da.remove_at_index(0)
         return removed_element
 
     def top(self) -> object:
