@@ -1,11 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Suhrob Hasanov
+# OSU Email: hasanovs@oregon
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
-
-# ---------------- sll.py file
+# Assignment: Assignment 3
+# Due Date: 2/13/23
+# Description: Singly Linked List implementation
 
 from SLNode import *
 
@@ -71,19 +69,17 @@ class LinkedList:
 
     def insert_front(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Inserts value to the front of the linked list.
         """
-        # print("the value: ", value)
-        # print("next", self._head.next)
-        # self._head.next - what ever self._head points to, which is the next node
 
         node = SLNode(value)
+        # New node now points to what head was pointing to
         node.next = self._head.next
         self._head.next = node
 
     def insert_back(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Inserts value to be back of the linked list.
         """
         # print("self.head value: ", self._head.value)
         if self._head.value is None:
@@ -92,7 +88,9 @@ class LinkedList:
 
         else:
             current_node = self._head
+            # Setting up loop count
             while_range = self.length()
+            # Getting to the end of the linked list and "adding the node"
             while(while_range >= 0):
                 if(current_node.next is None):
                     current_node.next = SLNode(value)
@@ -102,25 +100,26 @@ class LinkedList:
 
     def insert_at_index(self, index: int, value: object) -> None:
         """
-        TODO: Write this implementation
+        Insert the given node at the given index.
         """
         current_node = self._head
         if index < 0 or index > self.length():
             raise SLLException
 
+        # Iterating over to the given index
         for i in range(0, index + 1):
+            # If we at the index, we add the new node
             if index == i:
                 temp = current_node.next
                 new_node = SLNode(value)
                 current_node.next = new_node
                 new_node.next = temp
-
             current_node = current_node.next
 
 
     def remove_at_index(self, index: int) -> None:
         """
-        TODO: Write this implementation
+        Removes node at the given index.
         """
         previous_node = self._head
         current_node = self._head.next
@@ -128,32 +127,37 @@ class LinkedList:
         if index < 0 or index > self.length() - 1:
             raise SLLException
 
+        # Iterating over to the node at index and removing pointer to it "removing it"
         for i in range(0, index):
             previous_node = current_node
             current_node = current_node.next
-
         previous_node.next = current_node.next
+
         return
 
 
     def remove(self, value: object) -> bool:
         """
-        TODO: Write this implementation
+        Removes node with given value.
         """
         current_node = self._head.next
+        # Iterating and looking for the node with given value
         for i in range(self.length()):
             if(current_node.value == value):
+                # If found, we call remove function and return True
                 self.remove_at_index(i)
                 return True
             current_node = current_node.next
+        # If not found returning False
         return False
 
     def count(self, value: object) -> int:
         """
-        TODO: Write this implementation
+        Counts occurence of the node with given node.
         """
         current_node = self._head.next
         count = 0
+        # Looking for the value and adding to count if it's there
         for i in range(self.length()):
             if (current_node.value == value):
                 count += 1
@@ -162,7 +166,7 @@ class LinkedList:
 
     def find(self, value: object) -> bool:
         """
-        TODO: Write this implementation
+        Returns boolean value depending whether value is present.
         """
         current_node = self._head.next
         for i in range(self.length()):
@@ -173,28 +177,30 @@ class LinkedList:
 
     def slice(self, start_index: int, size: int) -> "LinkedList":
         """
-        TODO: Write this implementation
+        Returns section of the list from given index and given size.
         """
         if (start_index < 0 or start_index > self.length() - 1):
             raise SLLException
         if (size > self.length() - start_index or size < 0):
             raise SLLException
 
+
         newList = LinkedList()
         current_node = self._head
-
+        # If the size requested zero
         if size == 0:
             return newList
+        # If requested size is one
         if size == 1:
-            # If the index needed matches the iterated index
             for i in range(0, self.length()):
+                # If the index needed matches the iterated index
                 if (i == start_index):
                     current_node= current_node.next
                     newList.insert_front(current_node.value)
-
                     return newList
                 current_node = current_node.next
 
+        # In this block we establish the node that will be the starting node for slicing
         starting_node = None
         for i in range(0, self.length()):
             if (i == start_index):
@@ -203,7 +209,7 @@ class LinkedList:
                 break
             current_node = current_node.next
 
-
+        # Once we established the starting node, we loop to add it and remaining nodes
         for i in range(0, size):
             newList.insert_back(starting_node.value)
             starting_node = starting_node.next

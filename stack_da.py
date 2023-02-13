@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Suhrob Hasanov
+# OSU Email: hasanovs@oregon
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: Assignment 3
+# Due Date: 2/13/23
+# Description: Stack ADT class implementation with dynamic array
 
 
 from dynamic_array import *
@@ -52,25 +52,25 @@ class Stack:
 
     def push(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Pushes value to the stack.
         """
         self._da.append(value)
         # print("Value", value)
 
     def pop(self) -> object:
         """
-        TODO: Write this implementation
+        Removes value from the stack.
         """
         if self._da.is_empty():
             raise StackException
-
-        removed_element = self._da.get_at_index(self.size() -1)
+        # Getting the "top" aka the element at the end of the underlying array.
+        removed_element = self._da.get_at_index(self.size() - 1)
         self._da.remove_at_index(self.size() - 1)
         return removed_element
 
     def top(self) -> object:
         """
-        TODO: Write this implementation
+        Returns the value at the top of the stack.
         """
         if self._da.is_empty():
             raise StackException

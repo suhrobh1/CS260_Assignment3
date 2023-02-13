@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Suhrob Hasanov
+# OSU Email: hasanovs@oregon
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: Assignment 3
+# Due Date: 2/13/23
+# Description: Stack ADT class implementation with singly linked list
 
 
 from SLNode import SLNode
@@ -63,7 +63,7 @@ class Stack:
 
     def push(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Adds value to the stack.
         """
         new_node = SLNode(value)
 
@@ -77,18 +77,19 @@ class Stack:
 
     def pop(self) -> object:
         """
-        TODO: Write this implementation
+        Removes value from the stack.
         """
         if self.is_empty():
             raise StackException
         else:
+            # Getting the first node of the list and de-refrencing it(removing)
             temp = self._head
             self._head = self._head.next
             return temp.value
 
     def top(self) -> object:
         """
-        TODO: Write this implementation
+        Returns the value at the top of the stack.
         """
         if self.is_empty():
             raise StackException

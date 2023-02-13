@@ -1,10 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Suhrob Hasanov
+# OSU Email: hasanovs@oregon
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
-
+# Assignment: Assignment 3
+# Due Date: 2/13/23
+# Description: Queue ADT class implementation with array
 
 # Note: Changing any part of the pre-implemented methods (besides adding  #
 #       default parameters) will cause the Gradescope tests to fail.      #
@@ -68,7 +67,7 @@ class Queue:
 
     def enqueue(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Adds value to the queue.
         """
         # print("self._sa.length()", self._sa.length())
         # print("self._current_size", self._current_size)
@@ -78,27 +77,22 @@ class Queue:
             # print("Target hit!")
             self._double_queue()
 
-
-        # Option 2 for resize check
-        # if(self._sa.length() == self._current_size):
-        #     self._double_queue()
-
-
+        # Establishing the index for insertion
         self._back = (self._back + 1) % self._sa.length()
+        # Inserting the value
         self._sa[self._back] = value
         self._current_size += 1
 
     def dequeue(self) -> object:
         """
-        TODO: Write this implementation
+        Removes the value in the front of the queue.
         """
-        # print("front", self._front)
-        # print("current size", self._current_size)
 
         if self.is_empty():
             raise QueueException
-
+        # Saving a return value
         temp = self._sa[self._front]
+        # Establishing a new for front of queue
         self._front = (self._front + 1) % self._sa.length()
         self._current_size -= 1
         return temp
@@ -107,7 +101,7 @@ class Queue:
 
     def front(self) -> object:
         """
-        TODO: Write this implementation
+        Returns the value at the front of the queue.
         """
         if self.is_empty():
             raise QueueException
@@ -119,27 +113,32 @@ class Queue:
 
     def _double_queue(self) -> None:
         """
-        TODO: Write this implementation
+        Doubles the size of the queue (underlying SA) when it's full.
         """
 
         new_array = StaticArray(2 * self._sa.length())
-        i = 0  # new array iterator
-        j = self._front  # old array iterator
 
+        # new array iterator
+        i = 0
+        # old array iterator
+        j = self._front
+
+        # This block copies the values from old to new
         while(self._current_size != i):
-
             new_array[i] = self._sa[j]
             i += 1
             j = (j + 1) % self._current_size
 
-
+        # This block sets the new front, back, and new array
         self._front = 0
         self._back = self._sa.length() - 1
         self._sa = new_array
 
 
-
     def isFull(self):
+        """
+        Returns True/False depending on whether it's full or not.
+        """
         return (self._current_size == self._sa.length())
 
 

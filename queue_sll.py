@@ -1,9 +1,9 @@
-# Name:
-# OSU Email:
+# Name: Suhrob Hasanov
+# OSU Email: hasanovs@oregon
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: Assignment 3
+# Due Date: 2/13/23
+# Description: Queue ADT class implementation with singly linked list
 
 
 from SLNode import SLNode
@@ -64,24 +64,27 @@ class Queue:
 
     def enqueue(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Adds the given value to the queue.
         """
         new_node = SLNode(value)
 
+        # Is it empty?
         if self.is_empty():
             self._head = new_node
             self._tail = new_node
+        # If not empty, the tail points to the new node
         else:
             self._tail.next = new_node
             self._tail = new_node
 
     def dequeue(self) -> object:
         """
-        TODO: Write this implementation
+        Removes the value from the queue from the front.
         """
 
         if self.is_empty():
             raise QueueException
+        # If list not empty, the head will point to the node behind the front one
         else:
             temp = self._head
             self._head  = self._head.next
@@ -89,7 +92,7 @@ class Queue:
 
     def front(self) -> object:
         """
-        TODO: Write this implementation
+        Returns the value at the front of the queue.
         """
         if self.is_empty():
             raise QueueException
